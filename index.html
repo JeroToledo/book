@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jero Toledo</title>
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="/style/main.css">
 </head>
 
 <body onload="init()">
@@ -13,8 +13,8 @@
 
         <nav>
             <ul>
-                <li><a href="ilustracion/">ILUSTRACIÓN</a></li>
-                <li><a href="defacto/">DeFacto</a></li>
+                <li><a href="/ilustracion/">ILUSTRACIÓN</a></li>
+                <li><a href="/defacto/">DeFacto</a></li>
             </ul>
         </nav>
 
@@ -40,7 +40,7 @@
                 de sus posibilidades.
             </p>
 
-            <a href="about.html">LEER MÁS</a>
+            <a href="/about.html">LEER MÁS</a>
 
         </div>
     </div>
@@ -107,7 +107,7 @@
             // se acaba de acabar el fade out
             fondo.i++
             fondo.i %= fondo.imgs.length
-            fondo.e.style.backgroundImage = `url(img/fondos/${fondo.imgs[fondo.i]})`
+            fondo.e.style.backgroundImage = `url(/img/fondos/${fondo.imgs[fondo.i]})`
             fondo.e.style.opacity = 1
         }
         else {

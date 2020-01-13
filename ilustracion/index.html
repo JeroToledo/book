@@ -4,16 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jero Toledo</title>
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="/style/main.css">
 </head>
 
-<body onload="init_fondo()">
+<body onload="init()">
 
     <div id="menu">
+
+        <nav>
+            <ul>
+                <li><a href="/ilustracion/">ILUSTRACIÓN</a></li>
+                <li><a href="/defacto/">DeFacto</a></li>
+            </ul>
+        </nav>
 
     </div>
 
     <div style="position:relative">
+        <div>
+            <button id="hamburguesa" onclick="toggle_menu()">menu</button>
+        </div>
         <div id="fondo">
 
         </div>
@@ -30,7 +40,7 @@
                 de sus posibilidades.
             </p>
 
-            <a href="about.html">VER MÁS</a>
+            <a href="/about.html">LEER MÁS</a>
 
         </div>
     </div>
@@ -40,6 +50,45 @@
 </body>
 
 <script>
+
+    function init() {
+        window.scroll({
+            top: 0,
+            left: 1000,
+        });
+        init_fondo()
+
+    }
+
+    function toggle_menu() {
+        if (window.scrollX == 0) cerrar_menu()
+        else abrir_menu()
+    }
+
+    function abrir_menu() {
+
+        document.querySelector("#hamburguesa").innerText = "cerrar"
+
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    function cerrar_menu() {
+        document.querySelector("#hamburguesa").innerText = "menu"
+        window.scroll({
+            top: 0,
+            left: 1000,
+            behavior: 'smooth'
+        });
+    }
+
+
+
+
+
     function init_fondo() {
         window.fondo = {
             e: document.querySelector("#fondo"),
@@ -58,7 +107,7 @@
             // se acaba de acabar el fade out
             fondo.i++
             fondo.i %= fondo.imgs.length
-            fondo.e.style.backgroundImage = `url(img/fondos/${fondo.imgs[fondo.i]})`
+            fondo.e.style.backgroundImage = `url(/img/fondos/${fondo.imgs[fondo.i]})`
             fondo.e.style.opacity = 1
         }
         else {
