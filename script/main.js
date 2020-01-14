@@ -8,8 +8,7 @@ function init_loading_animation(){
                 window.loaded_imgs++
                 window.load_imgs()
             }); else {
-                window.loading_overlay = document.createElement("div")
-                loading_overlay.setAttribute("class", "cargando")
+                window.loading_overlay = document.querySelector("div.cargando")
                 document.body.appendChild(loading_overlay)
                 window.loading_int = setInterval(animate_loading, 50)
                 window.loading_frame = 0
