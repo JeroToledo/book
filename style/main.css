@@ -55,6 +55,17 @@ a{
     position: absolute;
     bottom: 9vh;
     left: 5vw;
+    transition:1s;
+}
+
+.bio_completa{
+    opacity: 1;
+    display: initial;
+}
+
+.bio_incompleta{
+    display: none; 
+    opacity: 0; 
 }
 
 #fondo{
@@ -69,7 +80,34 @@ a{
     border-right: 0px solid;
     border-color: #ff3fb4;
     box-sizing: border-box;
-    background-size: 70% auto;
+    background-size: 68vw auto;
+}
+
+.abrir_menu{
+    
+}
+
+#hamburguesa svg{
+    transition: 0.5s;
+}
+
+
+.cerrar_menu svg{
+    transform-origin: center;
+    transform: rotate(90deg);
+}
+
+#hamburguesa{
+    width:16px;
+    height:13px;
+    border: 0;
+    outline: 0;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    position: absolute;
+    top: 9vh;
+    left: 5vw;
+    z-index: 10;
 }
 
 #menu{
@@ -81,5 +119,13 @@ a{
     background-repeat: no-repeat;
     background-size: cover;
     flex-shrink: 0;
+    font-family: Futura;
+}
+
+#menu ul{
+    list-style: none;
+    font-size: 40px;
+    text-align: right;
+    margin: 9vh 5vw;
 }
 

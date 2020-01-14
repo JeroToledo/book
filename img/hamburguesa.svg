@@ -1,0 +1,8 @@
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.16 12.83">
+<style>
+    path{
+        fill:#ff3fb4;
+    }
+</style>
+
+<title>Hamburguesa</title><path d="M14.74,2.83H1.42A1.42,1.42,0,1,1,1.42,0H14.74a1.42,1.42,0,1,1,0,2.83Z" transform="translate(0 0)"/><path d="M14.74,7.83H1.42A1.42,1.42,0,1,1,1.42,5H14.74a1.42,1.42,0,1,1,0,2.83Z" transform="translate(0 0)"/><path d="M14.74,12.83H1.42a1.42,1.42,0,1,1,0-2.83H14.74a1.42,1.42,0,1,1,0,2.83Z" transform="translate(0 0)"/></svg>

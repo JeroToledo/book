@@ -13,7 +13,9 @@
 
         <nav>
             <ul>
+                <li><a href="/ilustracion/">INICIO</a></li>
                 <li><a href="/ilustracion/">ILUSTRACIÓN</a></li>
+                <li><a href="/ilustracion/">ANIMACIÓN</a></li>
                 <li><a href="/defacto/">DeFacto</a></li>
             </ul>
         </nav>
@@ -22,7 +24,22 @@
 
     <div style="position:relative;width:100vw;">
         <div>
-            <button id="hamburguesa" onclick="toggle_menu()">menu</button>
+            <button id="hamburguesa" class="abrir_menu" onclick="toggle_bio(true);toggle_menu()">
+                <svg id="Layer_1" style="width:16px;height:13px;" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16.16 12.83">
+                    <style>
+                        path {
+                            fill: #ff3fb4;
+                        }
+                    </style>
+                    <path d="M14.74,2.83H1.42A1.42,1.42,0,1,1,1.42,0H14.74a1.42,1.42,0,1,1,0,2.83Z"
+                        transform="translate(0 0)" />
+                    <path d="M14.74,7.83H1.42A1.42,1.42,0,1,1,1.42,5H14.74a1.42,1.42,0,1,1,0,2.83Z"
+                        transform="translate(0 0)" />
+                    <path d="M14.74,12.83H1.42a1.42,1.42,0,1,1,0-2.83H14.74a1.42,1.42,0,1,1,0,2.83Z"
+                        transform="translate(0 0)" />
+                </svg>
+            </button>
         </div>
         <div id="fondo">
 
@@ -40,7 +57,37 @@
                 de sus posibilidades.
             </p>
 
-            <a href="/about.html">LEER MÁS</a>
+            <button id="ver_mas" onclick="toggle_bio()"
+                style="background: transparent;border:0;font:inherit;color:inherit;font-weight: bold;padding:0;">
+                LEER MÁS
+            </button>
+
+            <div id="mas_bio" class="bio_incompleta" style="transition: 1s">
+                <p>
+                    Siendo desde el 2006 participante activo del Taller de Gráfica La Hoja en
+                    Tepoztlán, Morelos, comienza el desarrollo de su carrera a partir del
+                    entendimiento de procesos y técnicas de reproducción gráfica, tales como
+                    la linografía, la xilografía, aguafuerte y punta seca.
+                </p>
+
+                <p>
+                    En 2019 acabó la carrera en Diseño en la UAM Cuajimalpa, titulándose
+                    con el proyecto colaborativo “De Facto” cuyo tema de estudio fue el
+                    acceso a la justicia para las personas con discapacidad visual y auditiva.
+
+                </p>
+
+                <p>
+                    Partiendo del entendido de que las problemáticas de carácter social únicamente
+                    podrán comenzar a solucionarse si se comprenden las barreras
+                    específicas de un sistema a través de un amplio estudio de campo en
+                    donde los agentes de la problemática sean tanto el objeto de estudio
+                    como los peritos que dictan los lineamientos de las soluciones, Jerónimo
+                    se propone utilizar sus conocimientos para encontrar el punto medio
+                    entre la creación artística y la solución a problemas complejos de caracter
+                    social.
+                </p>
+            </div>
 
         </div>
     </div>
@@ -50,6 +97,25 @@
 </body>
 
 <script>
+
+    function toggle_bio(close = false) {
+        if (close || document.querySelector("#mas_bio").getAttribute("class") == "bio_completa") {
+            document.querySelector("#about").style.top = ""
+            document.querySelector("#mas_bio").setAttribute("class", "bio_incompleta");
+            document.body.style.overflowY = "hidden"
+            document.querySelector("#ver_mas").innerText = "LEER MÁS"
+        }
+        else {
+            document.querySelector("#about").style.top = "15vh"
+            document.querySelector("#mas_bio").setAttribute("class", "bio_completa");
+            document.body.style.overflowY = "auto"
+            document.querySelector("#ver_mas").innerText = "LEER MENOS"
+        }
+
+
+
+    }
+
 
     function init() {
         window.scroll({
@@ -67,7 +133,7 @@
 
     function abrir_menu() {
 
-        document.querySelector("#hamburguesa").innerText = "cerrar"
+        document.querySelector("#hamburguesa").setAttribute("class", "cerrar_menu")
 
         window.scroll({
             top: 0,
@@ -77,7 +143,7 @@
     }
 
     function cerrar_menu() {
-        document.querySelector("#hamburguesa").innerText = "menu"
+        document.querySelector("#hamburguesa").setAttribute("class", "abrir_menu")
         window.scroll({
             top: 0,
             left: 1000,
