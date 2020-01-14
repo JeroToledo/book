@@ -4,35 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jero Toledo</title>
-    <link rel="stylesheet" href="style/main.css">
+    <link rel="stylesheet" href="/style/main.css">
 </head>
 
-<body onload="init_fondo()">
+<style>
+    body {
+        background: #d50056;
+        color: #ffffff;
+        width: min-content
+    }
+
+    #menu {
+        background: #000000;
+        color: #ffffff;
+    }
+
+    #cols {
+        display: flex;
+        margin: 35vh auto;
+        width: min-content;
+    }
+
+    #cols div {
+        width: 155px;
+        height: 155px;
+        background-size: 150%;
+        background-position: center;
+        border-radius: 100px;
+        margin-left: 50px;
+    }
+
+    .il:hover .ov {
+        display: block;
+    }
+
+    #contenido {
+        flex-shrink: 0;
+        transition: 0.7s;
+        background-size: cover !important;
+        background-repeat: no-repeat;
+        background-clip: border-box !important;
+        background-origin: border-box !important;
+        background-position: center !important;
+        background-attachment: fixed;
+    }
+
+    .ov {
+        pointer-events: none;
+        display: none;
+        width: 100% !important;
+        height: 100vh !important;
+        z-index: 100;
+        background-color: #ffffffc0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        font-size: 100px;
+        color: red;
+        background-size: 90% 90% !important;
+        background-repeat: no-repeat;
+        border-radius: 0 !important;
+        margin: 0 !important;
+    }
+
+    #texto {
+        position: absolute;
+        width: 30%;
+        left: 50%;
+        top: 20%;
+    }
+</style>
+
+<body onload="init()">
+
+
 
     <div id="menu">
 
+        <nav>
+            <ul>
+                <li><a href="/">INICIO</a></li>
+                <li><a href="/ilustracion/">ILUSTRACIÓN</a></li>
+                <li><a href="/ilustracion/">ANIMACIÓN</a></li>
+                <li><a href="/defacto/">DeFacto</a></li>
+            </ul>
+        </nav>
+
     </div>
 
-    <div style="position:relative">
-        <div id="fondo">
+    <div id="contenido" style="position:relative;width:100vw;height:100vh">
 
+        <div>
+            <button id="hamburguesa" class="abrir_menu" onclick="toggle_menu()">
+                <svg id="Layer_1" style="width:16px;height:13px;" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16.16 12.83">
+                    <style>
+                        path {
+                            fill: #ffffff;
+                        }
+                    </style>
+                    <path d="M14.74,2.83H1.42A1.42,1.42,0,1,1,1.42,0H14.74a1.42,1.42,0,1,1,0,2.83Z"
+                        transform="translate(0 0)" />
+                    <path d="M14.74,7.83H1.42A1.42,1.42,0,1,1,1.42,5H14.74a1.42,1.42,0,1,1,0,2.83Z"
+                        transform="translate(0 0)" />
+                    <path d="M14.74,12.83H1.42a1.42,1.42,0,1,1,0-2.83H14.74a1.42,1.42,0,1,1,0,2.83Z"
+                        transform="translate(0 0)" />
+                </svg>
+            </button>
         </div>
 
-        <div id="about">
-            <h1 style="margin:0">
-                JERO TOLEDO
-            </h1>
+        <div id="texto" style="display:none">
+
             <p>
-                El campo profesional en el que me desarrollo parte de la necesidad
-                interdisciplinaria inherente a cualquier problemática compleja. Pero,
-                inevitablemente, la mayoría de los trabajos que he realizado dependen
-                del análisis y la comprensión del lenguaje gráfico, así como de la exploración
-                de sus posibilidades.
+                La Ilustración del cuento de Horacio Quiroga, El Almohadón de Plumas, forma
+                parte de la colección de cuentos “Grito” de la editorial independiente La Hoja
+                Doblada, editorial que nace del conjunto de esfuerzos de los participantes del
+                Taller de Gráfica La Hoja.
             </p>
 
-            <a href="about.html">VER MÁS</a>
+            <p>
+                Cada cuento cuenta con un código QRL que te lleva a descargar una aplicación
+                en donde podrás ver a través de realidad aumentada las animaciones que
+                acompañan a cada ilustración.
+            </p>
+
+            <img src="QRL.svg" style="width: 30%" alt="">
+
+            <p>
+                Para concer toda la colección, así como la editorial,
+                accede a: <a href="https://lahojadoblada.com/">https://lahojadoblada.com/</a>
+            </p>
+
+
+
+
 
         </div>
+
+
+
     </div>
 
 
@@ -40,33 +150,72 @@
 </body>
 
 <script>
-    function init_fondo() {
-        window.fondo = {
-            e: document.querySelector("#fondo"),
-            i: -1,
-            imgs: ["Escarabajo.svg", "Catarina.svg", "Chinche3.svg", "Escarabajo2.svg", "EscarabajoRinoceronte.svg", "Chinche2.svg", "Chinche.svg", " EscarabajoCaquero.svg"],
-            out: true,
-            fade: (o) => setTimeout(() => fondo.e.style.opacity = o, 3000)
-        }
-        fondo.e.addEventListener("transitionend", trans_fondo)
-        trans_fondo()
+
+    window.addEventListener("keydown", e => {
+        console.log(e.key)
+        if (e.key == "ArrowLeft") prev_page()
+        if (e.key == "ArrowRight") next_page()
+    })
+
+    function next_page() {
+        if (window.pagina == 5) return
+        window.pagina++
+        window.pagina %= 6
+        goto_page()
+    }
+
+    function prev_page() {
+        if (window.pagina == 0) return
+        window.pagina--
+        window.pagina %= 6
+        goto_page()
+    }
+
+    function goto_page() {
+        document.querySelector("#contenido").style.backgroundImage = `url(paginas/${window.pagina}.svg`
+        if (window.pagina == 5) document.querySelector("#texto").style.display = "block"
+        else document.querySelector("#texto").style.display = "none"
+    }
+
+
+    function init() {
+        window.scroll({
+            top: 0,
+            left: 1000
+        });
+
+        window.pagina = 0;
+        goto_page()
 
     }
 
-    function trans_fondo() {
-        if (fondo.out) {
-            // se acaba de acabar el fade out
-            fondo.i++
-            fondo.i %= fondo.imgs.length
-            fondo.e.style.backgroundImage = `url(img/fondos/${fondo.imgs[fondo.i]})`
-            fondo.e.style.opacity = 1
-        }
-        else {
-            //acaba de entrar el nuevo fondo
-            fondo.fade(0)
-        }
+    function toggle_menu() {
+        if (window.scrollX == 0) cerrar_menu()
+        else abrir_menu()
+    }
 
-        fondo.out = !fondo.out
+    function abrir_menu() {
+
+        document.querySelector("#contenido").style.width = "63vw"
+
+        document.querySelector("#hamburguesa").setAttribute("class", "cerrar_menu")
+
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    function cerrar_menu() {
+        document.querySelector("#contenido").style.width = "100vw"
+        document.querySelector("#hamburguesa").setAttribute("class", "abrir_menu")
+        let i = setInterval(() => window.scroll({
+            top: 0,
+            left: 1000
+        }), 1);
+
+        setTimeout(() => clearInterval(i), 700)
     }
 
 </script>

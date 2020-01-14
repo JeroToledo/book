@@ -66,6 +66,13 @@
         border-radius: 0 !important;
         margin: 0 !important;
     }
+
+    #texto {
+        position: absolute;
+        width: 30%;
+        left: 50%;
+        top: 20%;
+    }
 </style>
 
 <body onload="init()">
@@ -106,6 +113,34 @@
             </button>
         </div>
 
+        <div id="texto" style="display:none">
+
+            <p>
+                La Ilustración del cuento de Horacio Quiroga, El Almohadón de Plumas, forma
+                parte de la colección de cuentos “Grito” de la editorial independiente La Hoja
+                Doblada, editorial que nace del conjunto de esfuerzos de los participantes del
+                Taller de Gráfica La Hoja.
+            </p>
+
+            <p>
+                Cada cuento cuenta con un código QRL que te lleva a descargar una aplicación
+                en donde podrás ver a través de realidad aumentada las animaciones que
+                acompañan a cada ilustración.
+            </p>
+
+            <img src="QRL.svg" style="width: 30%" alt="">
+
+            <p>
+                Para concer toda la colección, así como la editorial,
+                accede a: <a href="https://lahojadoblada.com/">https://lahojadoblada.com/</a>
+            </p>
+
+
+
+
+
+        </div>
+
 
 
     </div>
@@ -138,6 +173,8 @@
 
     function goto_page() {
         document.querySelector("#contenido").style.backgroundImage = `url(paginas/${window.pagina}.svg`
+        if (window.pagina == 5) document.querySelector("#texto").style.display = "block"
+        else document.querySelector("#texto").style.display = "none"
     }
 
 
