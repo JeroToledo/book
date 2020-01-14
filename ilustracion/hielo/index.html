@@ -78,6 +78,22 @@
 <body onload="init()">
 
     <div class="cargando">
+        <style>
+            .cargando {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #ffffff;
+                z-index: 11;
+                background-size: 300px 300px;
+                background-position: center;
+                background-repeat: no-repeat;
+                transition-property: opacity;
+                transition-duration: 1s;
+            }
+        </style>
         <script src="/script/main.js" onload="init_loading_animation()"></script>
     </div>
 
