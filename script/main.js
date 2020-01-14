@@ -28,7 +28,7 @@ function animate_loading(){
     window.loading_overlay.style.backgroundImage = `url(/img/cargando/${window.loading_frame}.svg)`
     window.loading_overlay.style.backgroundPositionX = `${window.loading_pos}px`
 
-    if (total_loading_frames == 20){
+    if (total_loading_frames > 20){
         if (document.readyState == "complete") stop_loading_animation()
     }
     else{
