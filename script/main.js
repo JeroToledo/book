@@ -1,11 +1,27 @@
 function init_loading_animation(){
-    window.loading_overlay = document.createElement("div")
-    loading_overlay.setAttribute("class", "cargando")
-    document.body.appendChild(loading_overlay)
-    window.loading_int = setInterval(animate_loading, 50)
-    window.loading_frame = 0
-    window.total_loading_frames = 0
-    window.loading_pos = -300
+
+    window.loaded_imgs = 0
+
+    window.load_imgs = () => {
+        if (loaded_imgs < 6) 
+            fetch(`/img/cargando/${window.loaded_imgs}.svg`).then(()=>{
+                window.loaded_imgs++
+                window.load_imgs()
+            }); else {
+                window.loading_overlay = document.createElement("div")
+                loading_overlay.setAttribute("class", "cargando")
+                document.body.appendChild(loading_overlay)
+                window.loading_int = setInterval(animate_loading, 50)
+                window.loading_frame = 0
+                window.total_loading_frames = 0
+                window.loading_pos = -300
+            }
+    }
+
+    load_imgs()
+    
+
+   
 }
 
 function animate_loading(){
