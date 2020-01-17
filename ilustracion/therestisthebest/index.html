@@ -45,7 +45,6 @@
         background-clip: border-box !important;
         background-origin: border-box !important;
         background-position: center !important;
-        background-attachment: fixed;
     }
 
     .ov {
@@ -66,16 +65,14 @@
         margin: 0 !important;
     }
 
-    #texto {
-        position: absolute;
-        width: 30%;
-        left: 50%;
-        top: 20%;
+    .texto-oculto {
+        display: block;
+        margin: 90vh auto;
+        width: max-content;
     }
 </style>
 
 <body onload="init()">
-
     <div class="cargando">
         <style>
             .cargando {
@@ -95,6 +92,7 @@
         </style>
         <script src="/script/main.js" onload="init_loading_animation()"></script>
     </div>
+
 
     <div id="menu">
 
@@ -130,34 +128,53 @@
             </button>
         </div>
 
-        <div id="texto" style="display:none">
+        <div id="t1" class="texto-oculto" style="display:none">
 
             <p>
-                La Ilustración del cuento de Horacio Quiroga, El Almohadón de Plumas, forma
-                parte de la colección de cuentos “Grito” de la editorial independiente La Hoja
-                Doblada, editorial que nace del conjunto de esfuerzos de los participantes del
-                Taller de Gráfica La Hoja.
+                Para Luis, que le espera tanto...
             </p>
-
-            <p>
-                Cada cuento cuenta con un código QRL que te lleva a descargar una aplicación
-                en donde podrás ver a través de realidad aumentada las animaciones que
-                acompañan a cada ilustración.
-            </p>
-
-            <img src="QRL.svg" style="width: 30%" alt="">
-
-            <p>
-                Para concer toda la colección, así como la editorial,
-                accede a: <a href="https://lahojadoblada.com/">https://lahojadoblada.com/</a>
-            </p>
-
-
-
 
 
         </div>
 
+        <div id="t2" class="texto-oculto" style="display:none">
+            <p>
+                Para los que encuentran algo exquisito en los esqueletos
+            </p>
+        </div>
+
+        <div id="t3" class="texto-oculto">
+            <p>
+                Para los queridos de Monotrópical
+            </p>
+        </div>
+
+        <div id="t4" class="texto-oculto">
+
+            <p>
+                Para LATA, que ojalá algún día tome forma...
+            </p>
+
+        </div>
+
+        <div id="t5" class="texto-oculto">
+            <p>
+                Para aquellos que se regocijan en la melancolía
+            </p>
+        </div>
+
+        <div id="t6" class="texto-oculto">
+            <p>
+                •
+            </p>
+        </div>
+
+        <div id="t7" class="texto-oculto">
+            <p>
+                Y para aquellos les gusta ruido: <a
+                    href="https://soundcloud.com/user-953285119">https://soundcloud.com/user-953285119</a>
+            </p>
+        </div>
 
 
     </div>
@@ -168,32 +185,44 @@
 
 <script>
 
-    window.num_paginas = 12
-
     window.addEventListener("keydown", e => {
-        console.log(e.key)
         if (e.key == "ArrowLeft") prev_page()
         if (e.key == "ArrowRight") next_page()
     })
 
     function next_page() {
-        if (window.pagina == window.num_paginas - 1) return
+        if (window.pagina == 7) return
         window.pagina++
-        window.pagina %= window.num_paginas
+        window.pagina %= 8
         goto_page()
     }
 
     function prev_page() {
         if (window.pagina == 0) return
         window.pagina--
-        window.pagina %= window.num_paginas
+        window.pagina %= 8
         goto_page()
     }
 
     function goto_page() {
-        document.querySelector("#contenido").style.backgroundImage = `url(paginas/${window.pagina}.svg`
-        if (window.pagina == 5) document.querySelector("#texto").style.display = "block"
-        else document.querySelector("#texto").style.display = "none"
+
+        fetch(`paginas/${window.pagina}.svg`)
+            .then(
+                (r) => {
+                    let url = (r.status == 200) ? `url(paginas/${window.pagina}.svg` : `url(paginas/${window.pagina}.png`
+                    document.querySelector("#contenido").style.backgroundImage = url
+                }
+            )
+
+
+        try {
+            document.querySelectorAll(".texto-oculto").forEach(function (e, i) {
+                if (e.id == `t${window.pagina}`) e.style.display = null
+                else e.style.display = "none"
+            })
+        } catch (e) {
+
+        }
     }
 
 
@@ -215,7 +244,10 @@
 
     function abrir_menu() {
 
-        document.querySelector("#contenido").style.width = "63vw"
+        //document.querySelector("#contenido").style.width = "63vw"
+        //document.querySelector("#contenido").style.background = "#ffffff"
+
+
 
         document.querySelector("#hamburguesa").setAttribute("class", "cerrar_menu")
 
@@ -229,12 +261,12 @@
     function cerrar_menu() {
         document.querySelector("#contenido").style.width = "100vw"
         document.querySelector("#hamburguesa").setAttribute("class", "abrir_menu")
-        let i = setInterval(() => window.scroll({
+        window.scroll({
             top: 0,
-            left: 1000
-        }), 1);
+            left: 1000,
+            behavior: 'smooth'
+        })
 
-        setTimeout(() => clearInterval(i), 700)
     }
 
 </script>

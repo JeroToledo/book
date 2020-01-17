@@ -71,16 +71,16 @@
                 JERO TOLEDO
             </h1>
             <p>
-                El campo profesional en el que me desarrollo parte de la necesidad
-                interdisciplinaria inherente a cualquier problemática compleja. Pero,
-                inevitablemente, la mayoría de los trabajos que he realizado dependen
-                del análisis y la comprensión del lenguaje gráfico, así como de la exploración
-                de sus posibilidades.
+                Jerónimo Toledo Rossell es un diseñador y artista interdiscplinario que
+                busca desfigurar los límites entre la expresión creativa y las soluciones a
+                problemáticas complejas de carácter social.
             </p>
 
             <button id="ver_mas" onclick="toggle_bio()"
                 style="background: transparent;border:0;font:inherit;color:inherit;font-weight: bold;padding:0;">
-                LEER MÁS
+                <span>LEER MÁS</span>
+                <img src="img/Flecha.svg"
+                    style="transition:0.3s;height:10px; margin-left: 5px; transform: rotate(180deg)" alt="">
             </button>
 
             <div id="mas_bio" class="bio_incompleta" style="transition: 1s">
@@ -88,16 +88,13 @@
                     Siendo desde el 2006 participante activo del Taller de Gráfica La Hoja en
                     Tepoztlán, Morelos, comienza el desarrollo de su carrera a partir del
                     entendimiento de procesos y técnicas de reproducción gráfica, tales como
-                    la linografía, la xilografía, aguafuerte y punta seca.
+                    la linografía, la xilografía, el aguafuerte y la punta seca
                 </p>
-
                 <p>
-                    En 2019 acabó la carrera en Diseño en la UAM Cuajimalpa, titulándose
+                    En 2019 acabó la licenciatura en Diseño en la UAM Cuajimalpa titulándose
                     con el proyecto colaborativo “De Facto” cuyo tema de estudio fue el
-                    acceso a la justicia para las personas con discapacidad visual y auditiva.
-
+                    acceso a la justicia para las personas con discapacidad visual y auditiva
                 </p>
-
                 <p>
                     Partiendo del entendido de que las problemáticas de carácter social únicamente
                     podrán comenzar a solucionarse si se comprenden las barreras
@@ -105,8 +102,15 @@
                     donde los agentes de la problemática sean tanto el objeto de estudio
                     como los peritos que dictan los lineamientos de las soluciones, Jerónimo
                     se propone utilizar sus conocimientos para encontrar el punto medio
-                    entre la creación artística y la solución a problemas complejos de caracter
-                    social.
+                    entre la creación artística y la solución colaborativa a problemas complejos
+                    de carácter social
+                </p>
+                <p>
+                    Aunado a todo esto el joven artista se ha dedicado en los últimos años a
+                    desarrollar sus habilidades gráficas y sonoras partiendo de la creencia de
+                    que a partir la maestría de estás podrá encontrar pistas sobre las relaciones
+                    semánticas entre los distintos medios de comunicación, y así, crear
+                    y solucionar a partir de ellas.
                 </p>
             </div>
 
@@ -127,13 +131,16 @@
             document.querySelector("#about").setAttribute("class", "about_chico");
             document.querySelector("#mas_bio").setAttribute("class", "bio_incompleta");
             document.body.style.overflowY = "hidden"
-            document.querySelector("#ver_mas").innerText = "LEER MÁS"
+            document.querySelector("#ver_mas").querySelector("span").innerText = "LEER MÁS"
+            document.querySelector("#ver_mas").querySelector("img").style.transform = "rotate(180deg)"
         }
         else {
             document.querySelector("#about").setAttribute("class", "about_grande");
             document.querySelector("#mas_bio").setAttribute("class", "bio_completa");
             document.body.style.overflowY = "auto"
-            document.querySelector("#ver_mas").innerText = "LEER MENOS"
+            document.querySelector("#ver_mas").querySelector("span").innerText = "LEER MENOS"
+            document.querySelector("#ver_mas").querySelector("img").style.transform = "rotate(0)"
+
         }
 
 
@@ -146,7 +153,7 @@
             top: 0,
             left: 1000,
         });
-        init_fondo()
+        //init_fondo()
 
     }
 

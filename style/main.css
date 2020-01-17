@@ -72,10 +72,10 @@ a{
 }
 
 #fondo{
-    opacity: 0;
+    opacity: 1;
     width: 100vw;
     height: 100%;
-    background-image: url('/img/EscarabajoRosa.svg');
+    background-image: url('/img/ChincheRosa.svg');
     background-repeat: no-repeat;
     background-position-x: right;
     transition: 5s;
@@ -83,7 +83,7 @@ a{
     border-right: 0px solid;
     border-color: #ff3fb4;
     box-sizing: border-box;
-    background-size: 68vw auto;
+    background-size: 63vw auto;
 }
 
 .abrir_menu{
