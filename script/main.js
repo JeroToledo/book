@@ -4,7 +4,7 @@ function init_loading_animation(){
 
     window.load_imgs = () => {
         if (loaded_imgs < 6) 
-            fetch(`/img/cargando/${window.loaded_imgs}.svg`).then(()=>{
+            fetch(`/img/cargando/${window.loaded_imgs}.png`).then(()=>{
                 window.loaded_imgs++
                 window.load_imgs()
             }); else {
