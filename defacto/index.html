@@ -40,7 +40,6 @@
 
     #contenido {
         flex-shrink: 0;
-        transition: 0.7s;
         background-size: cover !important;
         background-repeat: no-repeat;
         background-clip: border-box !important;
@@ -84,8 +83,8 @@
 
     #t4 img {
         margin: 10px;
-        dheight: 10vh;
-        width: auto
+        width: 186px;
+        height: 142px;
     }
 
     #t3 {
@@ -136,8 +135,8 @@
             <ul>
                 <li><a href="/">INICIO</a></li>
                 <li><a href="/ilustracion/">ILUSTRACIÓN</a></li>
-                <li><a href="/ilustracion/">ANIMACIÓN</a></li>
                 <li><a href="/defacto/">DeFacto</a></li>
+                <li><a href="/contacto/">CONTACTO</a></li>
             </ul>
         </nav>
 
@@ -290,7 +289,16 @@
     }
 
     function goto_page() {
-        document.querySelector("#contenido").style.backgroundImage = `url(paginas/${window.pagina}.svg`
+
+        fetch(`paginas/${window.pagina}.svg`)
+            .then(
+                (r) => {
+                    let url = (r.status == 200) ? `url(paginas/${window.pagina}.svg` : `url(paginas/${window.pagina}.png`
+                    document.querySelector("#contenido").style.backgroundImage = url
+                }
+            )
+
+
         try {
             document.querySelectorAll(".texto-oculto").forEach(function (e, i) {
                 if (e.id == `t${window.pagina}`) e.style.display = null

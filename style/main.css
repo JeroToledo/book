@@ -53,19 +53,22 @@ a{
     width: 32vw;
     max-width: 440px;
     position: absolute;
-    bottom: 9vh;
+    top: 50vh;
     left: 5vw;
     transition:1s;
 }
 
+.about_grande{
+    transform: translate(0,-30vh);
+}
+
 .bio_completa{
     opacity: 1;
-    display: initial;
 }
 
 .bio_incompleta{
-    display: none; 
     opacity: 0; 
+     
 }
 
 #fondo{
@@ -120,6 +123,7 @@ a{
     background-size: cover;
     flex-shrink: 0;
     font-family: Futura;
+    min-width: max-content;
 }
 
 #menu ul{
@@ -129,3 +133,8 @@ a{
     margin: 9vh 5vw;
 }
 
+
+#contenido{
+    transition-property: width;
+    transition: 0.7s;
+}

@@ -34,10 +34,10 @@
 
         <nav>
             <ul>
-                <li><a href="/ilustracion/">INICIO</a></li>
+                <li><a href="/">INICIO</a></li>
                 <li><a href="/ilustracion/">ILUSTRACIÓN</a></li>
-                <li><a href="/ilustracion/">ANIMACIÓN</a></li>
                 <li><a href="/defacto/">DeFacto</a></li>
+                <li><a href="/contacto/">CONTACTO</a></li>
             </ul>
         </nav>
 
@@ -119,15 +119,18 @@
 
 <script>
 
+
+
+
     function toggle_bio(close = false) {
         if (close || document.querySelector("#mas_bio").getAttribute("class") == "bio_completa") {
-            document.querySelector("#about").style.top = ""
+            document.querySelector("#about").setAttribute("class", "about_chico");
             document.querySelector("#mas_bio").setAttribute("class", "bio_incompleta");
             document.body.style.overflowY = "hidden"
             document.querySelector("#ver_mas").innerText = "LEER MÁS"
         }
         else {
-            document.querySelector("#about").style.top = "15vh"
+            document.querySelector("#about").setAttribute("class", "about_grande");
             document.querySelector("#mas_bio").setAttribute("class", "bio_completa");
             document.body.style.overflowY = "auto"
             document.querySelector("#ver_mas").innerText = "LEER MENOS"
@@ -172,6 +175,7 @@
         });
     }
 
+    window.addEventListener("resize", cerrar_menu)
 
 
 
