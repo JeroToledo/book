@@ -53,7 +53,7 @@ a{
     width: 32vw;
     max-width: 440px;
     position: absolute;
-    top: 50vh;
+    top: 60vh;
     left: 5vw;
     transition:1s;
 }
@@ -137,4 +137,8 @@ a{
 #contenido{
     transition-property: width;
     transition: 0.7s;
+}
+
+#instructions{
+    display: none
 }

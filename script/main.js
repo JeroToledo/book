@@ -23,6 +23,14 @@ function init_loading_animation(){
    
 }
 
+function show_instructions(){
+    document.querySelector("#instructions").style.display = "block"
+}
+
+function hide_instructions(){
+    document.querySelector("#instructions").style.display = "none"
+}
+
 function animate_loading(){
 
     window.loading_overlay.style.backgroundImage = `url(/img/cargando/${window.loading_frame}.svg)`

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jero Toledo</title>
+    <title>Hielo</title>
     <link rel="stylesheet" href="/style/main.css">
 </head>
 
@@ -96,6 +96,32 @@
         <script src="/script/main.js" onload="init_loading_animation()"></script>
     </div>
 
+    <div id="instructions">
+        <style>
+            #instructions {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #ffffffd9;
+                color: #000000;
+                font-weight: bold;
+                z-index: 11;
+                background-size: 300px 300px;
+                background-position: center;
+                background-repeat: no-repeat;
+
+            }
+        </style>
+        <p style="margin:50vh auto; text-align: center;">
+            Usa las flechas para navegar <img src="/img/Crucecita.svg" style="width: 15px;
+                position: absolute;
+                top: 10px;
+                right: 10px;" alt="cerrar" onclick="hide_instructions()">
+        </p>
+    </div>
+
     <div id="menu">
 
         <nav>
@@ -183,7 +209,14 @@
     }
 
     function goto_page() {
-        document.querySelector("#contenido").style.backgroundImage = `url(paginas/${window.pagina}.svg`
+        fetch(`paginas/${window.pagina}.svg`)
+            .then(
+                (r) => {
+                    let url = (r.status == 200) ? `url(paginas/${window.pagina}.svg` : `url(paginas/${window.pagina}.png`
+                    document.querySelector("#contenido").style.backgroundImage = url
+                }
+            )
+
         if (window.pagina == 10) document.querySelector("#texto").style.display = "block"
         else document.querySelector("#texto").style.display = "none"
 
@@ -193,6 +226,14 @@
 
 
     function init() {
+
+        if (!document.cookie.includes("instrucciones=ya")) {
+            show_instructions()
+            document.cookie = "instrucciones=ya"
+        }
+        else hide_instructions()
+
+
         window.scroll({
             top: 0,
             left: 1000

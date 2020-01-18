@@ -81,6 +81,28 @@
         margin: 30vh auto;
     }
 
+    #t4 div {
+        min-width: 200px;
+        text-align: center;
+        padding: 20px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 55%;
+    }
+
+    #t4 div p {
+        color: #000000;
+    }
+
+    #t4 div h3 {
+        color: #00b4ac;
+        font-family: GandhiSans !important;
+        text-align: center;
+        border-bottom: 2px solid #eb2346;
+        width: 100%;
+        padding-bottom: 15px;
+    }
+
     #t4 img {
         margin: 10px;
         width: 186px;
@@ -126,6 +148,32 @@
             }
         </style>
         <script src="/script/main.js" onload="init_loading_animation()"></script>
+    </div>
+
+    <div id="instructions">
+        <style>
+            #instructions {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #ffffffd9;
+                color: #000000;
+                font-weight: bold;
+                z-index: 11;
+                background-size: 300px 300px;
+                background-position: center;
+                background-repeat: no-repeat;
+
+            }
+        </style>
+        <p style="margin:50vh auto; text-align: center;">
+            Usa las flechas para navegar <img src="/img/Crucecita.svg" style="width: 15px;
+                position: absolute;
+                top: 10px;
+                right: 10px;" alt="cerrar" onclick="hide_instructions()">
+        </p>
     </div>
 
 
@@ -233,9 +281,38 @@
 
         <div id="t4" class="texto-oculto">
 
-            <img src="paginas/4.1.png" alt="">
-            <img src="paginas/4.2.png" alt="">
-            <img src="paginas/4.3.png" alt="">
+            <div style="background-image:url(paginas/4.1.svg)">
+                <h3>Taller de sensibilización</h3>
+                <p>
+                    Se desarrolló un taller de sensibilización
+                    en materia de discapacidad
+                    para funcionarios públicos con la
+                    CNDH.
+                </p>
+            </div>
+
+            <div style="background-image:url(paginas/4.2.svg)">
+                <h3>Exposición itinerante</h3>
+                <p>
+                    Se produjo una exposición itinerante en
+                    donde se exponen historias de éxito al
+                    hacer uso de las herramientas legales
+                    presentadas como parte del sistema
+                    solución.
+                </p>
+            </div>
+
+            <div style="background-image:url(paginas/4.3.svg)">
+                <h3>Arma tu...</h3>
+                <p>
+                    Y se elaboró una plataforma accesible en
+
+                    donde los usuarios podrán generar los docu-
+                    mentos principales para presentar quejas,
+
+                    denuncias y hasta amparos.
+                </p>
+            </div>
 
         </div>
 
@@ -311,6 +388,13 @@
 
 
     function init() {
+
+        if (!document.cookie.includes("instrucciones=ya")) {
+            show_instructions()
+            document.cookie = "instrucciones=ya"
+        }
+        else hide_instructions()
+
         window.scroll({
             top: 0,
             left: 1000
