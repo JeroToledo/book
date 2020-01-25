@@ -58,3 +58,23 @@ function stop_loading_animation(){
     },1000)
 }
 
+
+function cache_page_imgs(){
+
+    if (document.cookie.includes("cache=ya")) return
+
+    function load_imgs(i,ext){
+        fetch("paginas/"+i+ext).then(r=> r.status == 200 ? load_imgs(i+1,ext) : document.cookie = "cache=ya")
+    }
+    fetch("paginas/0.svg",{method:'HEAD'})
+        .then(r=>{
+            if (r.status == 200){
+                //page uses svg
+                load_imgs(0,".svg")
+            }
+            else{
+                //page uses png
+                load_imgs(0,".png")
+            }
+        })
+}

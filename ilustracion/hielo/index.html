@@ -227,9 +227,11 @@
 
     function init() {
 
+        cache_page_imgs()
+
         if (!document.cookie.includes("instrucciones=ya")) {
             show_instructions()
-            document.cookie = "instrucciones=ya"
+            document.cookie = "instrucciones=ya;path=/"
         }
         else hide_instructions()
 

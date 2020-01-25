@@ -67,13 +67,14 @@
         </div>
 
         <div id="about">
+
+
+
             <h1 style="margin:0">
                 JERO TOLEDO
             </h1>
-            <p>
-                Jerónimo Toledo Rossell es un diseñador y artista interdiscplinario que
-                busca desfigurar los límites entre la expresión creativa y las soluciones a
-                problemáticas complejas de carácter social.
+            <p id="bio_corto">
+
             </p>
 
             <button id="ver_mas" onclick="toggle_bio()"
@@ -84,37 +85,21 @@
             </button>
 
             <div id="mas_bio" class="bio_incompleta" style="transition: 1s">
-                <p>
-                    Siendo desde el 2006 participante activo del Taller de Gráfica La Hoja en
-                    Tepoztlán, Morelos, comienza el desarrollo de su carrera a partir del
-                    entendimiento de procesos y técnicas de reproducción gráfica, tales como
-                    la linografía, la xilografía, el aguafuerte y la punta seca
-                </p>
-                <p>
-                    En 2019 acabó la licenciatura en Diseño en la UAM Cuajimalpa titulándose
-                    con el proyecto colaborativo “De Facto” cuyo tema de estudio fue el
-                    acceso a la justicia para las personas con discapacidad visual y auditiva
-                </p>
-                <p>
-                    Partiendo del entendido de que las problemáticas de carácter social únicamente
-                    podrán comenzar a solucionarse si se comprenden las barreras
-                    específicas de un sistema a través de un amplio estudio de campo en
-                    donde los agentes de la problemática sean tanto el objeto de estudio
-                    como los peritos que dictan los lineamientos de las soluciones, Jerónimo
-                    se propone utilizar sus conocimientos para encontrar el punto medio
-                    entre la creación artística y la solución colaborativa a problemas complejos
-                    de carácter social
-                </p>
-                <p>
-                    Aunado a todo esto el joven artista se ha dedicado en los últimos años a
-                    desarrollar sus habilidades gráficas y sonoras partiendo de la creencia de
-                    que a partir la maestría de estás podrá encontrar pistas sobre las relaciones
-                    semánticas entre los distintos medios de comunicación, y así, crear
-                    y solucionar a partir de ellas.
-                </p>
+
             </div>
 
         </div>
+
+        <script>
+            let corto = document.querySelector("#bio_corto")
+            let mas = document.querySelector("#mas_bio")
+            fetch("texto/bio_corto.txt?nocache=" + Date.now()).then(r => r.text().then(t => corto.innerHTML = t))
+            fetch("texto/bio_largo.txt?nocache=" + Date.now())
+                .then(r => r.text()
+                    .then(t => mas.innerHTML = t.split("\n\n").map(p => `<p>${p}</p>`).join("")))
+
+
+        </script>
     </div>
 
 
