@@ -33,7 +33,7 @@ function hide_instructions(){
 
 function animate_loading(){
 
-    window.loading_overlay.style.backgroundImage = `url(/img/cargando/${window.loading_frame}.svg)`
+    window.loading_overlay.style.backgroundImage = `url(/img/cargando/${window.loading_frame}.png)`
     window.loading_overlay.style.backgroundPositionX = `${window.loading_pos}px`
 
     if (document.cookie.includes("ojo=ya") || total_loading_frames > 20){
